@@ -550,6 +550,11 @@ section {
   align-items: stretch;
 }
 
+.pricing-grid-2 {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
 .price-card {
   background: #fff;
   border-radius: var(--radius);
