@@ -687,6 +687,14 @@ section {
 
 .contact-form button { margin-top: 1.5rem; }
 
+.honeypot-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
 .form-status {
   margin: 1em 0 0;
   font-weight: 600;
