@@ -231,9 +231,16 @@
             <li>Dedicated order coordinator</li>
             <li>Minimum order of 50 units</li>
           </ul>
-          <a href="#contact" class="btn btn-primary">Get a Quote</a>
         </div>
 
+      </div>
+
+      <div class="checkout-widget">
+        <label for="checkout-quantity">Quantity</label>
+        <input type="number" id="checkout-quantity" name="quantity" min="1" step="1" value="1" inputmode="numeric">
+        <button type="button" id="checkout-btn" class="btn btn-primary btn-lg">Get Quote / Checkout</button>
+        <p class="checkout-hint" id="checkout-hint">$299/unit under 50 &middot; $199/unit at 50+</p>
+        <p class="checkout-status" id="checkout-status" role="status" aria-live="polite"></p>
       </div>
     </div>
   </section>

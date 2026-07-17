@@ -647,6 +647,52 @@ section {
   font-size: 0.95rem;
 }
 
+.checkout-widget {
+  max-width: 480px;
+  margin: 2.5rem auto 0;
+  padding: 2rem;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+.checkout-widget label {
+  display: block;
+  font-weight: 600;
+  color: var(--navy-900);
+  margin-bottom: 0.5em;
+}
+
+.checkout-widget input {
+  width: 100px;
+  margin: 0 auto 1.25rem;
+  display: block;
+  padding: 0.6em;
+  font-size: 1rem;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+.checkout-widget input:focus {
+  outline: none;
+  border-color: var(--amber-500);
+}
+
+.checkout-hint {
+  margin: 0.9em 0 0;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.checkout-status {
+  margin: 0.75em 0 0;
+  font-size: 0.9rem;
+  min-height: 1.2em;
+}
+
 /* ==========================================================================
    CONTACT
    ========================================================================== */

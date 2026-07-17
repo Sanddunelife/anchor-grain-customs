@@ -72,6 +72,45 @@ document.addEventListener('DOMContentLoaded', () => {
     restartAutoplay();
   }
 
+  // ---------- Quantity checkout ----------
+  const checkoutBtn = document.getElementById('checkout-btn');
+  const checkoutQuantity = document.getElementById('checkout-quantity');
+  const checkoutStatus = document.getElementById('checkout-status');
+
+  if (checkoutBtn && checkoutQuantity && checkoutStatus) {
+    checkoutBtn.addEventListener('click', () => {
+      const quantity = Number.parseInt(checkoutQuantity.value, 10);
+
+      if (!Number.isInteger(quantity) || quantity < 1) {
+        checkoutStatus.textContent = 'Please enter a quantity of 1 or more.';
+        checkoutStatus.style.color = '#b3401f';
+        return;
+      }
+
+      checkoutBtn.disabled = true;
+      checkoutStatus.textContent = 'Creating your checkout link...';
+      checkoutStatus.style.color = '#555';
+
+      fetch('/.netlify/functions/create-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ quantity }),
+      })
+        .then((res) => res.json().then((data) => ({ ok: res.ok, data })))
+        .then(({ ok, data }) => {
+          if (!ok || !data.checkoutUrl) {
+            throw new Error(data.error || 'Checkout could not be created.');
+          }
+          window.location.href = data.checkoutUrl;
+        })
+        .catch((err) => {
+          checkoutStatus.textContent = err.message || 'Something went wrong. Please try again.';
+          checkoutStatus.style.color = '#b3401f';
+          checkoutBtn.disabled = false;
+        });
+    });
+  }
+
   // ---------- Contact form ----------
   const form = document.getElementById('contact-form');
   const status = document.getElementById('form-status');
