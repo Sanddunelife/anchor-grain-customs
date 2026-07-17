@@ -34,29 +34,17 @@ exports.handler = async (event) => {
     environment: SquareEnvironment.Production,
   });
 
-  const lineItems = [
-    {
-      catalogObjectId: variationId,
-      quantity: String(quantity),
-    },
-  ];
-
   try {
-    const { order } = await client.orders.create({
-      idempotencyKey: crypto.randomUUID(),
-      order: {
-        locationId: SQUARE_LOCATION_ID,
-        lineItems,
-      },
-    });
-
     const { paymentLink } = await client.checkout.paymentLinks.create({
       idempotencyKey: crypto.randomUUID(),
       order: {
-        id: order.id,
         locationId: SQUARE_LOCATION_ID,
-        version: order.version,
-        lineItems,
+        lineItems: [
+          {
+            catalogObjectId: variationId,
+            quantity: String(quantity),
+          },
+        ],
       },
     });
 
