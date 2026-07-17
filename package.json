@@ -19,5 +19,8 @@
   "homepage": "https://github.com/Sanddunelife/anchor-grain-customs#readme",
   "dependencies": {
     "square": "^45.0.1"
+  },
+  "devDependencies": {
+    "netlify-cli": "^26.2.0"
   }
 }
